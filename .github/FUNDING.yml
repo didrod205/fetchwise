@@ -1,0 +1,11 @@
+# These are supported funding model platforms.
+# Uncomment and fill in the handles for the platforms you use, then GitHub will
+# render a "Sponsor" button on the repository.
+
+github: [] # e.g. [your-username]
+open_collective: # e.g. fetchwise
+ko_fi: # e.g. yourname
+buy_me_a_coffee: # e.g. yourname
+patreon: # e.g. yourname
+liberapay: # e.g. yourname
+custom: # e.g. ["https://www.paypal.me/yourname"]

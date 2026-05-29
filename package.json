@@ -1,0 +1,61 @@
+{
+  "name": "fetchwise",
+  "version": "0.1.0",
+  "description": "Tiny, zero-dependency resilient fetch wrapper with retries, exponential backoff, timeouts and Retry-After support. Works in Node, Deno, Bun and the browser.",
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "sideEffects": false,
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "build": "tsup",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "coverage": "vitest run --coverage",
+    "typecheck": "tsc --noEmit",
+    "lint": "tsc --noEmit",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "fetch",
+    "retry",
+    "retries",
+    "backoff",
+    "exponential-backoff",
+    "timeout",
+    "retry-after",
+    "http",
+    "resilient",
+    "fetch-retry",
+    "zero-dependency"
+  ],
+  "author": "",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/USER/fetchwise.git"
+  },
+  "bugs": {
+    "url": "https://github.com/USER/fetchwise/issues"
+  },
+  "homepage": "https://github.com/USER/fetchwise#readme",
+  "devDependencies": {
+    "@vitest/coverage-v8": "^2.1.8",
+    "tsup": "^8.3.5",
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.8"
+  }
+}
