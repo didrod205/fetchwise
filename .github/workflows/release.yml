@@ -14,6 +14,8 @@ jobs:
     permissions:
       contents: read
       id-token: write # enables npm provenance
+    env:
+      NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -23,6 +25,8 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm test
-      - run: npm publish --provenance --access public
+      - name: Publish to npm
+        if: ${{ env.NPM_TOKEN != '' }}
+        run: npm publish --provenance --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
