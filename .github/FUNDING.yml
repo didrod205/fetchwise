@@ -1,11 +1,10 @@
-# These are supported funding model platforms.
-# Uncomment and fill in the handles for the platforms you use, then GitHub will
-# render a "Sponsor" button on the repository.
+# Supported funding model platforms.
+# GitHub has no built-in key for Lemon Squeezy, so the checkout link goes in
+# `custom`. The repository "Sponsor" button will link there.
 
-github: [] # e.g. [your-username]
-open_collective: # e.g. fetchwise
-ko_fi: # e.g. yourname
-buy_me_a_coffee: # e.g. yourname
-patreon: # e.g. yourname
-liberapay: # e.g. yourname
-custom: # e.g. ["https://www.paypal.me/yourname"]
+custom: ["https://elab-studio.lemonsqueezy.com/checkout/buy/5d059b89-51d0-456b-b33a-ed56994f7010"]
+
+# Other platforms you could add later:
+# github: [your-username]
+# ko_fi: yourname
+# buy_me_a_coffee: yourname

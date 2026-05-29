@@ -6,7 +6,7 @@
 
 [![npm version](https://img.shields.io/npm/v/fetchwise.svg?color=success)](https://www.npmjs.com/package/fetchwise)
 [![bundle size](https://img.shields.io/bundlephobia/minzip/fetchwise?label=gzip)](https://bundlephobia.com/package/fetchwise)
-[![CI](https://github.com/USER/fetchwise/actions/workflows/ci.yml/badge.svg)](https://github.com/USER/fetchwise/actions/workflows/ci.yml)
+[![CI](https://github.com/didrod205/fetchwise/actions/workflows/ci.yml/badge.svg)](https://github.com/didrod205/fetchwise/actions/workflows/ci.yml)
 [![types](https://img.shields.io/npm/types/fetchwise.svg)](https://www.npmjs.com/package/fetchwise)
 [![license](https://img.shields.io/npm/l/fetchwise.svg)](./LICENSE)
 
@@ -168,10 +168,10 @@ server. If the response carries a `Retry-After` header, that value wins.
 
 Contributions are very welcome! Please read [CONTRIBUTING.md](./CONTRIBUTING.md)
 and our [Code of Conduct](./CODE_OF_CONDUCT.md). Good first issues are labeled
-[`good first issue`](https://github.com/USER/fetchwise/labels/good%20first%20issue).
+[`good first issue`](https://github.com/didrod205/fetchwise/labels/good%20first%20issue).
 
 ```bash
-git clone https://github.com/USER/fetchwise.git
+git clone https://github.com/didrod205/fetchwise.git
 cd fetchwise
 npm install
 npm test
@@ -184,13 +184,9 @@ saves you from writing yet another retry loop, please consider supporting it —
 every bit helps keep the project healthy and the issues answered.
 
 - ⭐ **Star this repo** — the simplest, free way to help others discover it.
-- 💵 **[GitHub Sponsors](https://github.com/sponsors/USER)** — one-time or monthly.
-- ☕ **[Buy Me a Coffee](https://www.buymeacoffee.com/USER)**
-- 🌍 **[Open Collective](https://opencollective.com/fetchwise)** — for companies that want an invoice.
+- 🍋 **[Sponsor via Lemon Squeezy](https://elab-studio.lemonsqueezy.com/checkout/buy/5d059b89-51d0-456b-b33a-ed56994f7010)** — one-time or recurring support.
 
 > Sponsoring? Open an issue and we'll add your name/logo here. Thank you! 🙏
-
-<!-- Update `.github/FUNDING.yml` with your own handles to enable the GitHub "Sponsor" button. -->
 
 ## License
 

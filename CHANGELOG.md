@@ -21,5 +21,5 @@ project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - `parseRetryAfter` and `TimeoutError` exports.
 - Ships ESM + CJS with full TypeScript types.
 
-[Unreleased]: https://github.com/USER/fetchwise/compare/v0.1.0...HEAD
-[0.1.0]: https://github.com/USER/fetchwise/releases/tag/v0.1.0
+[Unreleased]: https://github.com/didrod205/fetchwise/compare/v0.1.0...HEAD
+[0.1.0]: https://github.com/didrod205/fetchwise/releases/tag/v0.1.0

@@ -42,16 +42,16 @@
     "fetch-retry",
     "zero-dependency"
   ],
-  "author": "",
+  "author": "didrod205 (https://github.com/didrod205)",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/USER/fetchwise.git"
+    "url": "git+https://github.com/didrod205/fetchwise.git"
   },
   "bugs": {
-    "url": "https://github.com/USER/fetchwise/issues"
+    "url": "https://github.com/didrod205/fetchwise/issues"
   },
-  "homepage": "https://github.com/USER/fetchwise#readme",
+  "homepage": "https://github.com/didrod205/fetchwise#readme",
   "devDependencies": {
     "@vitest/coverage-v8": "^2.1.8",
     "tsup": "^8.3.5",

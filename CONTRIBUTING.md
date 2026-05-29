@@ -7,7 +7,7 @@ in mind.
 ## Getting started
 
 ```bash
-git clone https://github.com/USER/fetchwise.git
+git clone https://github.com/didrod205/fetchwise.git
 cd fetchwise
 npm install
 ```
