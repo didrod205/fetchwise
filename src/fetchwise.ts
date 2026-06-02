@@ -259,3 +259,47 @@ export function create(defaults: RetryOptions = {}): Fetchwise {
   return (input, init = {}) =>
     fetchwise(input, { ...init, retry: { ...defaults, ...init.retry } });
 }
+
+/**
+ * Thrown by {@link fetchJson} when the response status is not 2xx. Carries the
+ * status and the `Response` so callers can inspect headers or read the body.
+ */
+export class HttpError extends Error {
+  readonly status: number;
+  readonly response: Response;
+  constructor(response: Response) {
+    super(`HTTP ${response.status} ${response.statusText} for ${response.url}`);
+    this.name = "HttpError";
+    this.status = response.status;
+    this.response = response;
+  }
+}
+
+/**
+ * Resilient fetch **plus** JSON: retries like {@link fetchwise}, throws
+ * {@link HttpError} on a non-2xx status (so you never silently parse an error
+ * page), and returns the decoded JSON typed as `T`. Pass `json` to serialize a
+ * request body and set `Content-Type: application/json` automatically.
+ *
+ * ```ts
+ * const user = await fetchJson<User>("/api/users/1");
+ * const created = await fetchJson<User>("/api/users", { json: { name: "Ada" } });
+ * ```
+ */
+export async function fetchJson<T = unknown>(
+  input: RequestInfo | URL,
+  init: FetchwiseInit & { json?: unknown } = {},
+): Promise<T> {
+  const { json, ...rest } = init;
+  let final: FetchwiseInit = rest;
+  if (json !== undefined) {
+    const headers = new Headers(rest.headers);
+    if (!headers.has("content-type")) headers.set("content-type", "application/json");
+    final = { ...rest, headers, body: JSON.stringify(json) };
+    if (final.method === undefined) final.method = "POST";
+  }
+  const response = await fetchwise(input, final);
+  if (!response.ok) throw new HttpError(response);
+  if (response.status === 204) return undefined as T; // No Content
+  return (await response.json()) as T;
+}

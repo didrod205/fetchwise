@@ -61,6 +61,25 @@ Anywhere you call `fetch`, call `fetchwise` instead. By default it makes up to
 const res = await fetchwise("/api/data");
 ```
 
+### JSON in one call
+
+`fetchJson` retries like `fetchwise`, **throws `HttpError` on a non-2xx** (so you
+never parse an error page by mistake), and returns typed JSON. Pass `json` to
+serialize a body and set `Content-Type` automatically.
+
+```ts
+import { fetchJson, HttpError } from "fetchwise";
+
+const user = await fetchJson<User>("/api/users/1");
+const created = await fetchJson<User>("/api/users", { json: { name: "Ada" } });
+
+try {
+  await fetchJson("/api/secret");
+} catch (e) {
+  if (e instanceof HttpError) console.log(e.status, e.response.url);
+}
+```
+
 ### Tune the retry behavior
 
 ```ts

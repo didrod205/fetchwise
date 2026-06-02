@@ -1,7 +1,9 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import {
   create,
+  fetchJson,
   fetchwise,
+  HttpError,
   parseRetryAfter,
   TimeoutError,
 } from "../src/fetchwise.js";
@@ -211,5 +213,44 @@ describe("parseRetryAfter", () => {
   it("returns null for missing or invalid values", () => {
     expect(parseRetryAfter(null)).toBeNull();
     expect(parseRetryAfter("not-a-date")).toBeNull();
+  });
+});
+
+describe("fetchJson & HttpError", () => {
+  afterEach(() => vi.restoreAllMocks());
+
+  function jsonRes(status: number, body: unknown): Response {
+    return new Response(status === 204 ? null : JSON.stringify(body), {
+      status,
+      headers: { "content-type": "application/json" },
+    });
+  }
+
+  it("returns parsed JSON on success", async () => {
+    vi.stubGlobal("fetch", vi.fn().mockResolvedValue(jsonRes(200, { id: 1, name: "Ada" })));
+    const user = await fetchJson<{ id: number; name: string }>("https://x.test/u/1");
+    expect(user).toEqual({ id: 1, name: "Ada" });
+  });
+
+  it("serializes a `json` body and sets Content-Type + POST", async () => {
+    const mock = vi.fn().mockResolvedValue(jsonRes(201, { ok: true }));
+    vi.stubGlobal("fetch", mock);
+    await fetchJson("https://x.test/u", { json: { name: "Ada" } });
+    const [, init] = mock.mock.calls[0] as [unknown, RequestInit];
+    expect(init.method).toBe("POST");
+    expect(new Headers(init.headers).get("content-type")).toBe("application/json");
+    expect(init.body).toBe(JSON.stringify({ name: "Ada" }));
+  });
+
+  it("throws HttpError (with status + response) on a non-2xx", async () => {
+    vi.stubGlobal("fetch", vi.fn().mockResolvedValue(jsonRes(404, { error: "missing" })));
+    const err = await fetchJson("https://x.test/missing", { retry: { retries: 0 } }).catch((e) => e);
+    expect(err).toBeInstanceOf(HttpError);
+    expect(err.status).toBe(404);
+  });
+
+  it("returns undefined for 204 No Content", async () => {
+    vi.stubGlobal("fetch", vi.fn().mockResolvedValue(jsonRes(204, null)));
+    expect(await fetchJson("https://x.test/del", { method: "DELETE" })).toBeUndefined();
   });
 });

@@ -6,6 +6,13 @@ project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [0.2.0]
+
+### Added
+
+- **`fetchJson<T>(input, init?)`** — resilient fetch + JSON in one call: retries like `fetchwise`, throws `HttpError` on a non-2xx status (no silently-parsed error pages), returns typed JSON, and serializes a `json` body (setting `Content-Type` + `POST`). 204 → `undefined`.
+- **`HttpError`** class carrying `status` and the `Response`.
+
 ## [0.1.0]
 
 ### Added
@@ -21,5 +28,6 @@ project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - `parseRetryAfter` and `TimeoutError` exports.
 - Ships ESM + CJS with full TypeScript types.
 
-[Unreleased]: https://github.com/didrod205/fetchwise/compare/v0.1.0...HEAD
+[Unreleased]: https://github.com/didrod205/fetchwise/compare/v0.2.0...HEAD
+[0.2.0]: https://github.com/didrod205/fetchwise/compare/v0.1.0...v0.2.0
 [0.1.0]: https://github.com/didrod205/fetchwise/releases/tag/v0.1.0
