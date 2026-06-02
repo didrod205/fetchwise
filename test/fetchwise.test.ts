@@ -244,9 +244,11 @@ describe("fetchJson & HttpError", () => {
 
   it("throws HttpError (with status + response) on a non-2xx", async () => {
     vi.stubGlobal("fetch", vi.fn().mockResolvedValue(jsonRes(404, { error: "missing" })));
-    const err = await fetchJson("https://x.test/missing", { retry: { retries: 0 } }).catch((e) => e);
+    const err = await fetchJson("https://x.test/missing", { retry: { retries: 0 } }).catch(
+      (e: unknown) => e,
+    );
     expect(err).toBeInstanceOf(HttpError);
-    expect(err.status).toBe(404);
+    expect((err as HttpError).status).toBe(404);
   });
 
   it("returns undefined for 204 No Content", async () => {
