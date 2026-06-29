@@ -1,10 +1,1 @@
-# Supported funding model platforms.
-# GitHub has no built-in key for Lemon Squeezy, so the checkout link goes in
-# `custom`. The repository "Sponsor" button will link there.
-
-custom: ["https://elab-studio.lemonsqueezy.com/checkout/buy/5d059b89-51d0-456b-b33a-ed56994f7010"]
-
-# Other platforms you could add later:
-# github: [your-username]
-# ko_fi: yourname
-# buy_me_a_coffee: yourname
+github: didrod205
